@@ -95,7 +95,7 @@ export const useAuthStore = create((set, get) => ({
         set({ isUpdatingProfile: true }); // Indicate that profile update is in progress
         try {
             // API call to update profile
-            const res = axiosInstance.put("/auth/profile-update", data); 
+            const res = await axiosInstance.put("/auth/profile-update", data); 
             // Store updated user data in the state
             set({ authUser: res.data }); 
             toast.success("Profile Updated Successfully!"); // Show success message
