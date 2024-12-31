@@ -4,7 +4,7 @@ import toast from "react-hot-toast"; // For displaying toast notifications
 import { io } from "socket.io-client"; 
 
 // Base URL for the API
-const BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:5001" : "/"; 
+const baseURL = import.meta.env.MODE === "development" ? "http://localhost:5001" : "/"; 
 
 export const useAuthStore = create((set, get) => ({
 
