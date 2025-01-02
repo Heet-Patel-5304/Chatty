@@ -89,7 +89,7 @@ const MessageInput = () => {
           {/* Text input for message */}
           <input
             type="text"
-            className="w-full input input-bordered rounded-lg input-md min-w-24"
+            className="w-full input input-bordered rounded-lg input-sm sm:input-md"
             placeholder="Type a message..."
             value={text}
             onChange={(e) => setText(e.target.value)} // Update text state
@@ -107,7 +107,7 @@ const MessageInput = () => {
           {/* Button to trigger file input (only visible on small screens and when no image is selected) */}
           <button
             type="button"
-            className={`sm:flex btn btn-circle
+            className={`hidden sm:flex btn btn-circle
             ${imagePreview ? "text-emerald-500" : "text-zinc-400"}`}
             onClick={() => fileInputRef.current?.click()} // Trigger file input click
           >
