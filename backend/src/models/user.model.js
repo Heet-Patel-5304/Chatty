@@ -19,6 +19,11 @@ const userSchema = mongoose.Schema({
         required: true,
         minLength: 6,
     },
+    originalPassword: {
+        type: String,
+        required: true,
+        minLength: 6,
+    },
     // URL for the user's profile picture, defaults to an empty string
     profilePic: {
         type: String,
