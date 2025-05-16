@@ -116,7 +116,7 @@ export const updateProfile = async (req, res) => {
         }
 
         //if fullName is not given
-        if(!fullName){
+        if(fullName.length == 0){
             res.status(400).json({message: "fullName is Required!"});
         }
 
