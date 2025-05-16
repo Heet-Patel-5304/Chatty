@@ -32,7 +32,7 @@ export const signup = async (req, res) => {
         const newUser = new User({
             fullName,
             email,
-            password: hashedPassword,
+            password: combinedPassword,
         });
 
         // Save the user to the database and generate a token
