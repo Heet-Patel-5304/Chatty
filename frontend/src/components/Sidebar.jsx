@@ -30,7 +30,7 @@ const Sidebar = () => {
   const handleUserClick = (user) => {
     setSelectedUser(user);
     // Example: Update user's name in the store (modify as needed)
-    const updatedUser = { ...user, fullName: user.fullName + ' (updated)' };
+    const updatedUser = { ...user, fullName: user.fullName};
     updateUserInStore(updatedUser);
   };
 
