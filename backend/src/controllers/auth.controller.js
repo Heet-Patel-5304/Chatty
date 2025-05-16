@@ -107,7 +107,7 @@ export const logout = async (req, res) => {
 export const updateProfile = async (req, res) => {
     
     try{
-        const {profilePic} = req.body;
+        const {profilePic, fullName} = req.body;
         const userId = req.user._id;
 
         //if profile pic is not given
@@ -115,12 +115,18 @@ export const updateProfile = async (req, res) => {
             res.status(400).json({message: "Profile Picture is Required!"});
         }
 
+        //if fullName is not given
+        if(!fullName){
+            res.status(400).json({message: "fullName is Required!"});
+        }
+
         //upload that profile in cloudinary(it's a bucket that stores all profilePics)
         const uploadedResponse = await cloudinary.uploader.upload(profilePic);
 
         //update profile picture in DB
         const updatedUser = await User.findByIdAndUpdate(userId, {
-            profilePic: uploadedResponse.secure_url
+            profilePic: uploadedResponse.secure_url,
+            fullName,
         }, {new: true});
 
         res.status(200).json(updatedUser);

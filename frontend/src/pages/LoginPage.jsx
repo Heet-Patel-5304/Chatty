@@ -121,7 +121,7 @@ const LoginPage = () => {
 
       {/* Right Side - Image/Pattern */}
       <AuthImagePattern
-        title={"Welcome back!"}
+        title={"Welcome. Version 2.0 is Here!"}
         subtitle={"Sign in to continue your conversations and catch up with your messages."}
       />
     </div>
