@@ -105,37 +105,33 @@ export const logout = async (req, res) => {
     }
 }
 export const updateProfile = async (req, res) => {
-    
-    try{
-        const {profilePic, fullName} = req.body;
+    try {
+        const { profilePic, fullName } = req.body;
         const userId = req.user._id;
 
-        //if profile pic is not given
-        if(!profilePic){
-            res.status(400).json({message: "Profile Picture is Required!"});
+        if (!profilePic && (!fullName || fullName.trim().length === 0)) {
+            return res.status(400).json({ message: "Profile Pic OR Full Name is Required!" });
         }
 
-        //if fullName is not given
-        if(fullName.length == 0){
-            res.status(400).json({message: "fullName is Required!"});
+        const updatedFields = {};
+
+        if (profilePic) {
+            const uploadedResponse = await cloudinary.uploader.upload(profilePic);
+            updatedFields.profilePic = uploadedResponse.secure_url;
         }
 
-        //upload that profile in cloudinary(it's a bucket that stores all profilePics)
-        const uploadedResponse = await cloudinary.uploader.upload(profilePic);
+        if (fullName && fullName.trim().length > 0) {
+            updatedFields.fullName = fullName.trim();
+        }
 
-        //update profile picture in DB
-        const updatedUser = await User.findByIdAndUpdate(userId, {
-            profilePic: uploadedResponse.secure_url,
-            fullName,
-        }, {new: true});
+        const updatedUser = await User.findByIdAndUpdate(userId, updatedFields, { new: true });
 
         res.status(200).json(updatedUser);
-    }
-    catch(error){
+    } catch (error) {
         console.log(error);
-        res.status(500).json({message: "Something went Wrong in updateProfile Controller!"});
+        res.status(500).json({ message: "Something went Wrong in updateProfile Controller!" });
     }
-}
+};
 export const checkAuth = async (req, res) => {
     try{
         //This function checks if user is authenticated or not
