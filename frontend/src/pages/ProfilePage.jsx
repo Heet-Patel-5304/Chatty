@@ -35,7 +35,6 @@ const ProfilePage = () => {
         <div className="bg-base-300 rounded-xl p-6 space-y-8">
           {/* Header */}
           <div className="text-center">
-            <h1 className="text-2xl font-bold">Version 2.0 is Here!</h1>
             <h1 className="text-2xl font-semibold">Profile</h1>
             <p className="mt-2">Your profile information</p>
           </div>
