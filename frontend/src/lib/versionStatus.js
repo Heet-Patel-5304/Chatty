@@ -1,0 +1,1 @@
+export const versionNumber = "Version 2.3 (Stable)"

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuthStore } from "../store/useAuthStore";
 import { Camera, Mail, User } from "lucide-react";
+import { versionNumber } from "../lib/versionStatus"
 
 const ProfilePage = () => {
   const { authUser, isUpdatingProfile, updateProfile } = useAuthStore();
@@ -124,7 +125,7 @@ const ProfilePage = () => {
               </div>
               <div className="flex items-center justify-between py-2">
                 <span>Version Info</span>
-                <span className="text-green-500">Version 2.2</span>
+                <span className="text-green-500"> {versionNumber} </span>
               </div>
             </div>
           </div>

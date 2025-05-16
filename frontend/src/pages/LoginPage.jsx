@@ -3,6 +3,7 @@ import { useAuthStore } from "../store/useAuthStore";
 import AuthImagePattern from "../components/AuthImagePattern";
 import { Link } from "react-router-dom";
 import { Eye, EyeOff, Loader2, Lock, Mail, MessageSquare } from "lucide-react";
+import { versionNumber } from "../lib/versionStatus"
 
 const LoginPage = () => {
   // State for password visibility toggle
@@ -121,7 +122,7 @@ const LoginPage = () => {
 
       {/* Right Side - Image/Pattern */}
       <AuthImagePattern
-        title={"Welcome. Version 2.2 is Here!"}
+        title={`${versionNumber} is Here!`}
         subtitle={"Sign in to continue your conversations and catch up with your messages."}
       />
     </div>
